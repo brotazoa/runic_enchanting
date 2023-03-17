@@ -1,0 +1,22 @@
+{
+  "type": "runic_enchanting:rune_enchanting",
+  "book": {
+    "item": "minecraft:book"
+  },
+  "target": {
+    "item": "runic_enchanting:armor_rune_page"
+  },
+  "primary": {
+    "item": "runic_enchanting:protection_rune_page"
+  },
+  "secondary": {
+    "item": "runic_enchanting:fire_rune_page"
+  },
+  "lapis_count": 1,
+  "exp_amount": 2,
+  "result": {
+    "item": "minecraft:enchanted_book"
+  },
+  "enchantment": "minecraft:fire_protection",
+  "level": 1
+}

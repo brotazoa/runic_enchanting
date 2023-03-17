@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "gdg",
+    "lll"
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:writable_book"
+    },
+    "l": {
+      "item": "minecraft:stripped_oak_log"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "runic_enchanting:rune_enchanting_table"
+  }
+}

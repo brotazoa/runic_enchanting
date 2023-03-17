@@ -1,0 +1,19 @@
+{
+  "type": "runic_enchanting:rune_enchanting",
+  "book": {
+    "item": "minecraft:book"
+  },
+  "target": {
+    "item": "runic_enchanting:range_rune_page"
+  },
+  "primary": {
+    "item": "runic_enchanting:damage_rune_page"
+  },
+  "lapis_count": 3,
+  "exp_amount": 9,
+  "result": {
+    "item": "minecraft:enchanted_book"
+  },
+  "enchantment": "minecraft:power",
+  "level": 5
+}

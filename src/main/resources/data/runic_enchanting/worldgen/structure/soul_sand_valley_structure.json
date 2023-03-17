@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:jigsaw",
+  "biomes": "minecraft:soul_sand_valley",
+  "step": "underground_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "beard_box",
+  "start_pool": "runic_enchanting:soul_sand_valley_structures",
+  "size": 1,
+  "start_height": {
+    "type": "uniform",
+    "min_inclusive": {
+      "above_bottom": 10
+    },
+    "max_inclusive": {
+      "below_top": 10
+    }
+  },
+  "max_distance_from_center": 80,
+  "use_expansion_hack": false
+}

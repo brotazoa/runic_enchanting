@@ -1,0 +1,25 @@
+{
+  "type": "runic_enchanting:rune_enchanting",
+  "book": {
+    "item": "minecraft:book"
+  },
+  "target": {
+    "item": "runic_enchanting:melee_rune_page"
+  },
+  "primary": {
+    "item": "runic_enchanting:range_rune_page"
+  },
+  "secondary": {
+    "item": "runic_enchanting:damage_rune_page"
+  },
+  "extra": {
+    "item": "runic_enchanting:water_rune_page"
+  },
+  "lapis_count": 2,
+  "exp_amount": 7,
+  "result": {
+    "item": "minecraft:enchanted_book"
+  },
+  "enchantment": "minecraft:impaling",
+  "level": 4
+}

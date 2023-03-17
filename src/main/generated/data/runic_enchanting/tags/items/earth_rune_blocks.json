@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "runic_enchanting:chiseled_stone_bricks_earth_rune_block",
+    "runic_enchanting:chiseled_sandstone_earth_rune_block",
+    "runic_enchanting:chiseled_red_sandstone_earth_rune_block",
+    "runic_enchanting:chiseled_deepslate_earth_rune_block",
+    "runic_enchanting:chiseled_polished_blackstone_earth_rune_block",
+    "runic_enchanting:chiseled_nether_bricks_earth_rune_block",
+    "runic_enchanting:chiseled_quartz_earth_rune_block"
+  ]
+}

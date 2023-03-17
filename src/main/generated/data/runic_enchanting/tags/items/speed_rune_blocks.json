@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "runic_enchanting:chiseled_stone_bricks_speed_rune_block",
+    "runic_enchanting:chiseled_sandstone_speed_rune_block",
+    "runic_enchanting:chiseled_red_sandstone_speed_rune_block",
+    "runic_enchanting:chiseled_deepslate_speed_rune_block",
+    "runic_enchanting:chiseled_polished_blackstone_speed_rune_block",
+    "runic_enchanting:chiseled_nether_bricks_speed_rune_block",
+    "runic_enchanting:chiseled_quartz_speed_rune_block"
+  ]
+}

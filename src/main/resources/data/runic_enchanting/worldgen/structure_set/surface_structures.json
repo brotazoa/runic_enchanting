@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "runic_enchanting:surface_structure",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 12,
+    "separation": 9,
+    "salt": 312309966
+  }
+}

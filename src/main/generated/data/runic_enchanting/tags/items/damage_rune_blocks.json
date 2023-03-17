@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "runic_enchanting:chiseled_stone_bricks_damage_rune_block",
+    "runic_enchanting:chiseled_sandstone_damage_rune_block",
+    "runic_enchanting:chiseled_red_sandstone_damage_rune_block",
+    "runic_enchanting:chiseled_deepslate_damage_rune_block",
+    "runic_enchanting:chiseled_polished_blackstone_damage_rune_block",
+    "runic_enchanting:chiseled_nether_bricks_damage_rune_block",
+    "runic_enchanting:chiseled_quartz_damage_rune_block"
+  ]
+}

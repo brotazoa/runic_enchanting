@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "runic_enchanting:chiseled_stone_bricks_fire_rune_block",
+    "runic_enchanting:chiseled_sandstone_fire_rune_block",
+    "runic_enchanting:chiseled_red_sandstone_fire_rune_block",
+    "runic_enchanting:chiseled_deepslate_fire_rune_block",
+    "runic_enchanting:chiseled_polished_blackstone_fire_rune_block",
+    "runic_enchanting:chiseled_nether_bricks_fire_rune_block",
+    "runic_enchanting:chiseled_quartz_fire_rune_block"
+  ]
+}

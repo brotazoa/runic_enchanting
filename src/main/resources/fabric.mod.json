@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "runic_enchanting",
+  "version": "${version}",
+  "name": "Runic Enchanting",
+  "description": "Craft enchantments from runes found in the world.",
+  "authors": [
+    "Brotazoa"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/runic_enchanting/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "amorphia.runic_enchanting.RunicEnchanting"
+    ],
+    "main": [
+      "amorphia.runic_enchanting.RunicEnchanting"
+    ],
+    "fabric-datagen": [
+      "amorphia.runic_enchanting.RunicEnchanting"
+    ],
+    "emi": [
+      "amorphia.runic_enchanting.compat.emi.RunicEnchantingEmiPlugin"
+    ],
+    "rei_client": [
+      "amorphia.runic_enchanting.compat.rei.RunicEnchantingReiPlugin"
+    ]
+  },
+  "mixins": [
+    "runic_enchanting.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "fabric": "*",
+    "minecraft": "1.19.2"
+  }
+}

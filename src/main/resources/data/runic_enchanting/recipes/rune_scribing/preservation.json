@@ -1,0 +1,10 @@
+{
+  "type": "runic_enchanting:rune_scribing",
+  "ingredient": {
+    "item": "minecraft:paper"
+  },
+  "required_rune": "runic_enchanting:runes/preservation_rune",
+  "result": {
+    "item": "runic_enchanting:preservation_rune_page"
+  }
+}

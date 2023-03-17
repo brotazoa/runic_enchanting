@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "runic_enchanting:water_structure",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 8,
+    "separation": 4,
+    "salt": 241020683
+  }
+}

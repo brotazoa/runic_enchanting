@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "runic_enchanting:soul_sand_valley_structure",
+      "weight": 1
+    },
+    {
+      "structure": "runic_enchanting:nether_structure",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 6,
+    "separation": 4,
+    "salt": 255741864
+  }
+}

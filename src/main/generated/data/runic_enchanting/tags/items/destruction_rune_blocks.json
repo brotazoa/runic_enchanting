@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "runic_enchanting:chiseled_stone_bricks_destruction_rune_block",
+    "runic_enchanting:chiseled_sandstone_destruction_rune_block",
+    "runic_enchanting:chiseled_red_sandstone_destruction_rune_block",
+    "runic_enchanting:chiseled_deepslate_destruction_rune_block",
+    "runic_enchanting:chiseled_polished_blackstone_destruction_rune_block",
+    "runic_enchanting:chiseled_nether_bricks_destruction_rune_block",
+    "runic_enchanting:chiseled_quartz_destruction_rune_block"
+  ]
+}

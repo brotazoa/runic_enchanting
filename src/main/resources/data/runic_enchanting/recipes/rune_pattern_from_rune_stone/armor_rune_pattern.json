@@ -1,0 +1,17 @@
+{
+  "type": "runic_enchanting:chalk_damaging_shapeless",
+  "ingredients": [
+    {
+      "item": "runic_enchanting:rune_chalk"
+    },
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "runic_enchanting:armor_rune_stone"
+    }
+  ],
+  "result": {
+    "item": "runic_enchanting:armor_rune_pattern"
+  }
+}

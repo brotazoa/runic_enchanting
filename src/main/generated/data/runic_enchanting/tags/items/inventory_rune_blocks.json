@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "runic_enchanting:chiseled_stone_bricks_inventory_rune_block",
+    "runic_enchanting:chiseled_sandstone_inventory_rune_block",
+    "runic_enchanting:chiseled_red_sandstone_inventory_rune_block",
+    "runic_enchanting:chiseled_deepslate_inventory_rune_block",
+    "runic_enchanting:chiseled_polished_blackstone_inventory_rune_block",
+    "runic_enchanting:chiseled_nether_bricks_inventory_rune_block",
+    "runic_enchanting:chiseled_quartz_inventory_rune_block"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "type": "runic_enchanting:rune_scribing",
+  "ingredient": {
+    "item": "minecraft:paper"
+  },
+  "required_rune": "runic_enchanting:runes/fire_rune",
+  "result": {
+    "item": "runic_enchanting:fire_rune_page"
+  }
+}

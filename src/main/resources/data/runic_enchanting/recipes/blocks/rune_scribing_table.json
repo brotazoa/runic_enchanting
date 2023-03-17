@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " b ",
+    "lgl",
+    "ooo"
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:book"
+    },
+    "l": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "o": {
+      "item": "minecraft:obsidian"
+    }
+  },
+  "result": {
+    "item": "runic_enchanting:rune_scribing_table"
+  }
+}

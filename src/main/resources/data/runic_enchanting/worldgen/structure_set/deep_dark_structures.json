@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "runic_enchanting:deep_dark_structure",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 4,
+    "separation": 2,
+    "salt": 259526544
+  }
+}

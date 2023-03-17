@@ -1,0 +1,10 @@
+{
+  "type": "runic_enchanting:rune_scribing",
+  "ingredient": {
+    "item": "minecraft:paper"
+  },
+  "required_rune": "runic_enchanting:runes/earth_rune",
+  "result": {
+    "item": "runic_enchanting:earth_rune_page"
+  }
+}

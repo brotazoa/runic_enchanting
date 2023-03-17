@@ -1,0 +1,22 @@
+{
+  "type": "runic_enchanting:rune_enchanting",
+  "book": {
+    "item": "minecraft:book"
+  },
+  "target": {
+    "item": "runic_enchanting:inventory_rune_page"
+  },
+  "primary": {
+    "item": "runic_enchanting:earth_rune_page"
+  },
+  "secondary": {
+    "item": "runic_enchanting:protection_rune_page"
+  },
+  "lapis_count": 3,
+  "exp_amount": 6,
+  "result": {
+    "item": "minecraft:enchanted_book"
+  },
+  "enchantment": "charm:collection",
+  "level": 1
+}

@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "runic_enchanting:block/rune_scribing_table",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "runic_enchanting:block/rune_scribing_table",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "runic_enchanting:block/rune_scribing_table",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "runic_enchanting:block/rune_scribing_table",
+      "y": 0
+    }
+  }
+}
