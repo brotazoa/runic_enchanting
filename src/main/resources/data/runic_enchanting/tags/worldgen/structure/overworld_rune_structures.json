@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "runic_enchanting:badlands_structure",
+    "runic_enchanting:deep_dark_structure",
+    "runic_enchanting:desert_structure",
+    "runic_enchanting:lush_caves_structure",
+    "runic_enchanting:surface_structure",
+    "runic_enchanting:water_structure"
+  ]
+}
