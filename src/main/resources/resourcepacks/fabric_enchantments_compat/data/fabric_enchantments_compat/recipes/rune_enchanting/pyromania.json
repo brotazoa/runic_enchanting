@@ -1,0 +1,24 @@
+{
+  "type": "runic_enchanting:rune_enchanting",
+  "book": {
+    "item": "minecraft:book"
+  },
+  "target": {
+    "item": "runic_enchanting:melee_rune_page"
+  },
+  "primary": {
+    "item": "runic_enchanting:fire_rune_page"
+  },
+  "secondary": {
+    "item": "runic_enchanting:damage_rune_page"
+  },
+  "extra": {
+    "item": "runic_enchanting:fire_rune_page"
+  },
+  "result": {
+    "item": "minecraft:enchanted_book"
+  },
+  "enchantment": "fabricenchantments:pyromania",
+  "level": 1,
+  "generated_additional_leveled_recipes": true
+}

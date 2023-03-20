@@ -14,6 +14,7 @@ import net.minecraft.recipe.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
@@ -34,7 +35,9 @@ public class RuneEnchantingRecipe implements Recipe<Inventory>
 
 	protected final Identifier enchantmentIdentifier;
 
-	public RuneEnchantingRecipe(Identifier identifier, Ingredient book, Ingredient target, Ingredient primary, Ingredient secondary, Ingredient extra, ItemStack output, int lapisCost, int expCost, Identifier enchantmentIdentifier, int level)
+	protected final boolean generateLeveledRecipes;
+
+	public RuneEnchantingRecipe(Identifier identifier, Ingredient book, Ingredient target, Ingredient primary, Ingredient secondary, Ingredient extra, ItemStack output, int lapisCost, int expCost, Identifier enchantmentIdentifier, int level, boolean generateAdditional)
 	{
 		this.identifier = identifier;
 		this.book = book;
@@ -47,6 +50,32 @@ public class RuneEnchantingRecipe implements Recipe<Inventory>
 		this.expCost = expCost;
 		this.level = level;
 		this.enchantmentIdentifier = enchantmentIdentifier;
+		this.generateLeveledRecipes = generateAdditional;
+	}
+
+	public RuneEnchantingRecipe(RuneEnchantingRecipe base, int level)
+	{
+		this.identifier = new Identifier(base.identifier.getNamespace(), base.identifier.getPath() + "_" + level);
+		this.book = base.book;
+		this.target = base.target;
+		this.primary = base.primary;
+		this.secondary = base.secondary;
+		this.extra = base.extra;
+		this.output = base.output;
+
+		Enchantment enchantment = Registry.ENCHANTMENT.get(base.enchantmentIdentifier);
+
+		//lapis cost range 1 - 3 based on level
+		final double lapisStep = 3.0 / (enchantment != null ? (double) enchantment.getMaxLevel() : 3.0);
+		this.lapisCost = Math.max(1, (int) Math.round(lapisStep * level));
+
+		//exp cost range 1 - 10 base on level plus base cost from recipe
+		final int expStep = 10 / (enchantment != null ? enchantment.getMaxLevel() : 10);
+		this.expCost = expStep * level + base.expCost;
+
+		this.level = level;
+		this.enchantmentIdentifier = base.enchantmentIdentifier;
+		this.generateLeveledRecipes = false;
 	}
 
 	@Override
@@ -154,6 +183,11 @@ public class RuneEnchantingRecipe implements Recipe<Inventory>
 		return this.level;
 	}
 
+	public boolean shouldGenerateAdditionalLeveledRecipes()
+	{
+		return this.generateLeveledRecipes;
+	}
+
 	@Override
 	public boolean isIgnoredInRecipeBook()
 	{
@@ -204,7 +238,9 @@ public class RuneEnchantingRecipe implements Recipe<Inventory>
 			final int lapisCost = JsonHelper.getInt(json, "lapis_count", 1);
 			final int expCost = JsonHelper.getInt(json, "exp_amount", 1);
 
-			return new RuneEnchantingRecipe(id, book, target, primary, secondary, extra, output, lapisCost, expCost, enchantmentIdentifier, level);
+			final boolean generate = JsonHelper.getBoolean(json, "generate_additional_leveled_recipes", false);
+
+			return new RuneEnchantingRecipe(id, book, target, primary, secondary, extra, output, lapisCost, expCost, enchantmentIdentifier, level, generate);
 		}
 
 		@Override
@@ -223,7 +259,9 @@ public class RuneEnchantingRecipe implements Recipe<Inventory>
 			final int lapisCost = buf.readInt();
 			final int expCost = buf.readInt();
 
-			return new RuneEnchantingRecipe(id, book, target, primary, secondary, extra, output, lapisCost, expCost, enchantmentIdentifier, level);
+			final boolean generate = buf.readBoolean();
+
+			return new RuneEnchantingRecipe(id, book, target, primary, secondary, extra, output, lapisCost, expCost, enchantmentIdentifier, level, generate);
 		}
 
 		@Override
@@ -241,6 +279,8 @@ public class RuneEnchantingRecipe implements Recipe<Inventory>
 
 			buf.writeInt(recipe.lapisCost);
 			buf.writeInt(recipe.expCost);
+
+			buf.writeBoolean(recipe.generateLeveledRecipes);
 		}
 	}
 }

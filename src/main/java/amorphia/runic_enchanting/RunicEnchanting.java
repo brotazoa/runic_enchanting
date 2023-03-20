@@ -75,6 +75,14 @@ public class RunicEnchanting implements ModInitializer, ClientModInitializer, Da
 				ResourceManagerHelper.registerBuiltinResourcePack(identify("charm_compat"), container, ResourcePackActivationType.DEFAULT_ENABLED);
 			});
 		}
+
+		//MoEnchantments compat
+		if (FabricLoader.getInstance().isModLoaded("moenchantments"))
+		{
+			FabricLoader.getInstance().getModContainer(modid).ifPresent(container -> {
+				ResourceManagerHelper.registerBuiltinResourcePack(identify("moenchantments_compat"), container, ResourcePackActivationType.DEFAULT_ENABLED);
+			});
+		}
 	}
 
 	@Override

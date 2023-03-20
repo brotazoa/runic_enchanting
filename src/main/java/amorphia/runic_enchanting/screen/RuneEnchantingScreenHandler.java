@@ -5,6 +5,7 @@ import amorphia.runic_enchanting.blocks.RunicEnchantingTable;
 import amorphia.runic_enchanting.items.RunePageItem;
 import amorphia.runic_enchanting.recipes.RuneEnchantingRecipe;
 import com.google.common.collect.Lists;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.CraftingResultInventory;
@@ -19,6 +20,7 @@ import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import java.util.Comparator;
@@ -249,7 +251,23 @@ public class RuneEnchantingScreenHandler extends ScreenHandler
 
 		if (!inventory.isEmpty())
 		{
-			this.availableRecipes.addAll(this.world.getRecipeManager().getAllMatches(RuneEnchantingRecipe.Type.INSTANCE, inventory, this.world));
+			this.world.getRecipeManager().getAllMatches(RuneEnchantingRecipe.Type.INSTANCE, inventory, this.world).forEach(recipe -> {
+				Enchantment enchantment = Registry.ENCHANTMENT.get(recipe.getEnchantmentIdentifier());
+
+				if(enchantment == null)
+					return;
+
+				if (!recipe.shouldGenerateAdditionalLeveledRecipes())
+				{
+					this.availableRecipes.add(recipe);
+					return;
+				}
+
+				for(int i = enchantment.getMinLevel(); i <= enchantment.getMaxLevel(); i++)
+				{
+					this.availableRecipes.add(new RuneEnchantingRecipe(recipe, i));
+				}
+			});
 			this.availableRecipes.sort(Comparator.comparingInt(RuneEnchantingRecipe::getEnchantmentLevel));
 		}
 

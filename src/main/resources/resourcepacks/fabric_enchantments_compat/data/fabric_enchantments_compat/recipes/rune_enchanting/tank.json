@@ -1,0 +1,24 @@
+{
+  "type": "runic_enchanting:rune_enchanting",
+  "book": {
+    "item": "minecraft:book"
+  },
+  "target": {
+    "item": "runic_enchanting:armor_rune_page"
+  },
+  "primary": {
+    "item": "runic_enchanting:life_rune_page"
+  },
+  "secondary": {
+    "item": "runic_enchanting:preservation_rune_page"
+  },
+  "extra": {
+    "item": "runic_enchanting:spirit_rune_page"
+  },
+  "result": {
+    "item": "minecraft:enchanted_book"
+  },
+  "enchantment": "fabricenchantments:tank",
+  "level": 1,
+  "generated_additional_leveled_recipes": true
+}

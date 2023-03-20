@@ -36,8 +36,16 @@ public class RunicEnchantingEmiPlugin implements EmiPlugin
 		for(RuneEnchantingRecipe recipe : registry.getRecipeManager().listAllOfType(RuneEnchantingRecipe.Type.INSTANCE))
 		{
 			Enchantment enchantment = Registry.ENCHANTMENT.get(recipe.getEnchantmentIdentifier());
-			if(enchantment != null && recipe.getEnchantmentLevel() >= enchantment.getMaxLevel())
+			if(enchantment == null)
+				continue;
+
+			if(!recipe.shouldGenerateAdditionalLeveledRecipes())
+			{
 				registry.addRecipe(new RuneEnchantingEmiRecipe(recipe));
+				continue;
+			}
+
+			registry.addRecipe(new RuneEnchantingEmiRecipe(new RuneEnchantingRecipe(recipe, enchantment.getMaxLevel())));
 		}
 
 		registry.removeEmiStacks(EmiStack.of(RunicEnchanting.tabItem));

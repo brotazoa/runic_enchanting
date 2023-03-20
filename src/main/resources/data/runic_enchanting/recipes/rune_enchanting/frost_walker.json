@@ -1,0 +1,22 @@
+{
+  "type": "runic_enchanting:rune_enchanting",
+  "book": {
+    "item": "minecraft:book"
+  },
+  "target": {
+    "item": "runic_enchanting:armor_rune_page"
+  },
+  "primary": {
+    "item": "runic_enchanting:water_rune_page"
+  },
+  "secondary": {
+    "item": "runic_enchanting:preservation_rune_page"
+  },
+  "exp_amount": 3,
+  "result": {
+    "item": "minecraft:enchanted_book"
+  },
+  "enchantment": "minecraft:frost_walker",
+  "level": 1,
+  "generate_additional_leveled_recipes": true
+}

@@ -31,8 +31,14 @@ public class RunicEnchantingReiPlugin implements REIClientPlugin
 
 		registry.registerFiller(RuneEnchantingRecipe.class, recipe -> {
 			Enchantment enchantment = Registry.ENCHANTMENT.get(recipe.getEnchantmentIdentifier());
-			return enchantment != null && recipe.getEnchantmentLevel() >= enchantment.getMaxLevel();
-		}, RuneEnchantingReiDisplay::new);
+			if(enchantment == null)
+				return null;
+
+			if(!recipe.shouldGenerateAdditionalLeveledRecipes())
+				return new RuneEnchantingReiDisplay(recipe);
+
+			return new RuneEnchantingReiDisplay(new RuneEnchantingRecipe(recipe, enchantment.getMaxLevel()));
+		});
 	}
 
 	@Override
