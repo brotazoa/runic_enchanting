@@ -20,5 +20,5 @@
   },
   "enchantment": "fabricenchantments:shotgun",
   "level": 1,
-  "generated_additional_leveled_recipes": true
+  "generate_additional_leveled_recipes": true
 }
