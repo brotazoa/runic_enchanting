@@ -63,7 +63,7 @@ public class ChalkItem extends Item implements Vanishable
 
 					if (paperStack.isEmpty())
 					{
-						player.setStackInHand(Hand.OFF_HAND, paperStack);
+						player.setStackInHand(Hand.OFF_HAND, patternStack);
 					}
 					else
 					{
