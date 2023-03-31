@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "runic_enchanting:air_rune_page",
+    "runic_enchanting:armor_rune_page",
+    "runic_enchanting:cunning_rune_page",
+    "runic_enchanting:damage_rune_page",
+    "runic_enchanting:destruction_rune_page",
+    "runic_enchanting:earth_rune_page",
+    "runic_enchanting:equipment_rune_page",
+    "runic_enchanting:fire_rune_page",
+    "runic_enchanting:force_rune_page",
+    "runic_enchanting:inventory_rune_page",
+    "runic_enchanting:life_rune_page",
+    "runic_enchanting:luck_rune_page",
+    "runic_enchanting:melee_rune_page",
+    "runic_enchanting:preservation_rune_page",
+    "runic_enchanting:protection_rune_page",
+    "runic_enchanting:range_rune_page",
+    "runic_enchanting:revenge_rune_page",
+    "runic_enchanting:speed_rune_page",
+    "runic_enchanting:spirit_rune_page",
+    "runic_enchanting:time_rune_page",
+    "runic_enchanting:tool_rune_page",
+    "runic_enchanting:water_rune_page"
+  ]
+}

@@ -1,5 +1,6 @@
 package amorphia.runic_enchanting.items;
 
+import amorphia.runic_enchanting.RE_Tags;
 import amorphia.runic_enchanting.Runes;
 import amorphia.runic_enchanting.blocks.RuneBlock;
 import net.minecraft.block.BlockState;
@@ -43,7 +44,7 @@ public class ChalkItem extends Item implements Vanishable
 		if (player != null &&
 				blockState.getBlock() instanceof RuneBlock runeBlock &&
 				player.getEquippedStack(EquipmentSlot.MAINHAND).getItem() instanceof ChalkItem &&
-				player.getEquippedStack(EquipmentSlot.OFFHAND).getItem() == Items.PAPER)
+				player.getEquippedStack(EquipmentSlot.OFFHAND).isIn(RE_Tags.CAN_BE_CONVERTED_TO_PATTERN))
 		{
 			ItemStack paperStack = player.getEquippedStack(EquipmentSlot.OFFHAND);
 			Runes rune = runeBlock.getRune();

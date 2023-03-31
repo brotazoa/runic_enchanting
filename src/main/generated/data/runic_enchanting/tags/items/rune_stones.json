@@ -1,0 +1,27 @@
+{
+  "replace": false,
+  "values": [
+    "runic_enchanting:air_rune_stone",
+    "runic_enchanting:armor_rune_stone",
+    "runic_enchanting:cunning_rune_stone",
+    "runic_enchanting:damage_rune_stone",
+    "runic_enchanting:destruction_rune_stone",
+    "runic_enchanting:earth_rune_stone",
+    "runic_enchanting:equipment_rune_stone",
+    "runic_enchanting:fire_rune_stone",
+    "runic_enchanting:force_rune_stone",
+    "runic_enchanting:inventory_rune_stone",
+    "runic_enchanting:life_rune_stone",
+    "runic_enchanting:luck_rune_stone",
+    "runic_enchanting:melee_rune_stone",
+    "runic_enchanting:preservation_rune_stone",
+    "runic_enchanting:protection_rune_stone",
+    "runic_enchanting:range_rune_stone",
+    "runic_enchanting:revenge_rune_stone",
+    "runic_enchanting:speed_rune_stone",
+    "runic_enchanting:spirit_rune_stone",
+    "runic_enchanting:time_rune_stone",
+    "runic_enchanting:tool_rune_stone",
+    "runic_enchanting:water_rune_stone"
+  ]
+}

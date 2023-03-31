@@ -12,6 +12,12 @@ import java.util.Map;
 
 public class RE_Tags
 {
+	public static TagKey<Item> RUNE_PATTERNS;
+	public static TagKey<Item> RUNE_STONES;
+	public static TagKey<Item> RUNE_PAGES;
+
+	public static TagKey<Item> CAN_BE_CONVERTED_TO_PATTERN;
+
 	public static TagKey<Item> AIR_RUNE_BLOCKS;
 	public static TagKey<Item> ARMOR_RUNE_BLOCKS;
 	public static TagKey<Item> CUNNING_RUNE_BLOCKS;
@@ -41,6 +47,12 @@ public class RE_Tags
 
 	public static void init()
 	{
+		RUNE_PATTERNS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("rune_patterns"));
+		RUNE_STONES = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("rune_stones"));
+		RUNE_PAGES = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("rune_pages"));
+
+		CAN_BE_CONVERTED_TO_PATTERN = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("can_be_converted_to_pattern"));
+
 		AIR_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("air_rune_blocks"));
 		ARMOR_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("armor_rune_blocks"));
 		CUNNING_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("cunning_rune_blocks"));
