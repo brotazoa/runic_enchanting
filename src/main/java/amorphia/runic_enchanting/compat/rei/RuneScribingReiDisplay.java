@@ -20,7 +20,7 @@ public class RuneScribingReiDisplay implements Display
 	public RuneScribingReiDisplay(RuneScribingRecipe recipe)
 	{
 		inputs = List.of(EntryIngredients.ofIngredient(recipe.getIngredients().get(0)));
-		output = EntryIngredients.of(recipe.getOutput());
+		output = EntryIngredients.of(recipe.getOutput(null));
 		this.runeBlock = EntryIngredients.ofIngredient(Ingredient.fromTag(RE_Tags.BLOCK_TAG_BY_RUNE.get(recipe.getRequiredRune())));
 	}
 

@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/equipment_rune",
+  "required_rune": "runic_enchanting:equipment_rune",
   "result": {
     "item": "runic_enchanting:equipment_rune_page"
   }

@@ -26,7 +26,7 @@ public class RuneEnchantingEmiRecipe implements EmiRecipe
 				EmiIngredient.of(recipe.getIngredients().get(2)),
 				EmiIngredient.of(recipe.getIngredients().get(3)),
 				EmiIngredient.of(recipe.getIngredients().get(4)));
-		this.output = List.of(EmiStack.of(recipe.getOutput()));
+		this.output = List.of(EmiStack.of(recipe.getOutput(null)));
 	}
 
 	@Override

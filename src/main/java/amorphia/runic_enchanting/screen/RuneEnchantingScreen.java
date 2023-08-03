@@ -4,6 +4,7 @@ import amorphia.runic_enchanting.RunicEnchanting;
 import amorphia.runic_enchanting.recipes.RuneEnchantingRecipe;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.sound.PositionedSoundInstance;
@@ -81,27 +82,29 @@ public class RuneEnchantingScreen extends HandledScreen<RuneEnchantingScreenHand
 	}
 
 	@Override
-	public void render(MatrixStack matrices, int mouseX, int mouseY, float delta)
+	public void render(DrawContext matrices, int mouseX, int mouseY, float delta)
 	{
 		super.render(matrices, mouseX, mouseY, delta);
 		this.drawMouseoverTooltip(matrices, mouseX, mouseY);
 	}
 
 	@Override
-	protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY)
+	protected void drawBackground(DrawContext matrices, float delta, int mouseX, int mouseY)
 	{
 		this.renderBackground(matrices);
-		RenderSystem.setShader(GameRenderer::getPositionTexShader);
-		RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
-		RenderSystem.setShaderTexture(0, TEXTURE);
-		RenderSystem.enableBlend();
+//		RenderSystem.setShader(GameRenderer::getPositionTexShader);
+//		RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+//		RenderSystem.setShaderTexture(0, TEXTURE);
+//		RenderSystem.enableBlend();
 
 		//draw background
-		this.drawTexture(matrices, this.x, this.y, 0, 0, this.backgroundWidth, this.backgroundHeight);
+		//this.drawTexture(matrices, this.x, this.y, 0, 0, this.backgroundWidth, this.backgroundHeight);
+		matrices.drawTexture(TEXTURE, this.x, this.y, 0, 0, this.backgroundWidth, this.backgroundHeight);
 
 		//draw scrollbar thumb
 		int thumbPosition = (int) (((float) SCROLLBAR_SCROLLABLE_HEIGHT) * this.scrollAmount);
-		this.drawTexture(matrices, this.x + SCROLLBAR_OFFSET_X, this.y + SCROLLBAR_OFFSET_Y + thumbPosition, this.backgroundWidth + (this.shouldScroll() ? 0 : SCROLLBAR_THUMB_WIDTH), 0, SCROLLBAR_THUMB_WIDTH, SCROLLBAR_THUMB_HEIGHT);
+		//this.drawTexture(matrices, this.x + SCROLLBAR_OFFSET_X, this.y + SCROLLBAR_OFFSET_Y + thumbPosition, this.backgroundWidth + (this.shouldScroll() ? 0 : SCROLLBAR_THUMB_WIDTH), 0, SCROLLBAR_THUMB_WIDTH, SCROLLBAR_THUMB_HEIGHT);
+		matrices.drawTexture(TEXTURE, this.x + SCROLLBAR_OFFSET_X, this.y + SCROLLBAR_OFFSET_Y + thumbPosition, this.backgroundWidth + (this.shouldScroll() ? 0 : SCROLLBAR_THUMB_WIDTH), 0, SCROLLBAR_THUMB_WIDTH, SCROLLBAR_THUMB_HEIGHT);
 
 		final int recipeListX = this.x + RECIPE_LIST_OFFSET_X;
 		final int recipeListY = this.y + RECIPE_LIST_OFFSET_Y;
@@ -110,7 +113,7 @@ public class RuneEnchantingScreen extends HandledScreen<RuneEnchantingScreenHand
 		this.renderRecipeIcons(matrices, recipeListX, recipeListY, indexOfLastVisibleRecipe);
 	}
 
-	private void renderRecipeBackground(MatrixStack matrices, int mouseX, int mouseY, int recipeListX, int recipeListY, int indexOfLastVisibleRecipe)
+	private void renderRecipeBackground(DrawContext matrices, int mouseX, int mouseY, int recipeListX, int recipeListY, int indexOfLastVisibleRecipe)
 	{
 		for(int i = this.scrollOffset; i < indexOfLastVisibleRecipe && i < this.handler.getAvailableRecipesCount(); i++)
 		{
@@ -127,26 +130,31 @@ public class RuneEnchantingScreen extends HandledScreen<RuneEnchantingScreenHand
 			{
 				recipeButtonBackgroundV += RECIPE_ENTRY_HEIGHT * 2;
 			}
-			this.drawTexture(matrices, recipeButtonX, recipeButtonY - 1, 0, recipeButtonBackgroundV, RECIPE_ENTRY_WIDTH, RECIPE_ENTRY_HEIGHT);
+//			this.drawTexture(matrices, recipeButtonX, recipeButtonY - 1, 0, recipeButtonBackgroundV, RECIPE_ENTRY_WIDTH, RECIPE_ENTRY_HEIGHT);
+			matrices.drawTexture(TEXTURE, recipeButtonX, recipeButtonY - 1, 0, recipeButtonBackgroundV, RECIPE_ENTRY_WIDTH, RECIPE_ENTRY_HEIGHT);
 
-			drawTexture(matrices, recipeButtonX + RECIPE_BUTTON_PLUS_OFFSET_X, recipeButtonY, 100, PLUS_OFFSET_X, PLUS_OFFSET_Y, PLUS_WIDTH, PLUS_HEIGHT, 256, 256);
+//			drawTexture(matrices, recipeButtonX + RECIPE_BUTTON_PLUS_OFFSET_X, recipeButtonY, 100, PLUS_OFFSET_X, PLUS_OFFSET_Y, PLUS_WIDTH, PLUS_HEIGHT, 256, 256);
+			matrices.drawTexture(TEXTURE, recipeButtonX + RECIPE_BUTTON_PLUS_OFFSET_X, recipeButtonY, 100, PLUS_OFFSET_X, PLUS_OFFSET_Y, PLUS_WIDTH, PLUS_HEIGHT, 256, 256);
 
 			final boolean enoughExp = this.handler.hasEnoughExp(i);
 			final int exp_u = EXP_OFFSET_X + (enoughExp ? EXP_WIDTH : 0);
-			drawTexture(matrices, recipeButtonX + RECIPE_BUTTON_EXP_OFFSET_X, recipeButtonY - 1, 100, exp_u, EXP_OFFSET_Y, EXP_WIDTH, EXP_HEIGHT, 256, 256);
+//			drawTexture(matrices, recipeButtonX + RECIPE_BUTTON_EXP_OFFSET_X, recipeButtonY - 1, 100, exp_u, EXP_OFFSET_Y, EXP_WIDTH, EXP_HEIGHT, 256, 256);
+			matrices.drawTexture(TEXTURE, recipeButtonX + RECIPE_BUTTON_EXP_OFFSET_X, recipeButtonY - 1, 100, exp_u, EXP_OFFSET_Y, EXP_WIDTH, EXP_HEIGHT, 256, 256);
 
 			final boolean enoughLapis = this.handler.hasEnoughLapis(i);
 			final int lapis_u = LAPIS_OFFSET_X + (enoughLapis ? LAPIS_WIDTH : 0);
-			drawTexture(matrices, recipeButtonX + RECIPE_BUTTON_LAPIS_OFFSET_X, recipeButtonY - 1, 101, lapis_u, LAPIS_OFFSET_Y, LAPIS_WIDTH, LAPIS_HEIGHT, 256, 256);
+//			drawTexture(matrices, recipeButtonX + RECIPE_BUTTON_LAPIS_OFFSET_X, recipeButtonY - 1, 101, lapis_u, LAPIS_OFFSET_Y, LAPIS_WIDTH, LAPIS_HEIGHT, 256, 256);
+			matrices.drawTexture(TEXTURE, recipeButtonX + RECIPE_BUTTON_LAPIS_OFFSET_X, recipeButtonY - 1, 101, lapis_u, LAPIS_OFFSET_Y, LAPIS_WIDTH, LAPIS_HEIGHT, 256, 256);
 
 
 			final boolean canAfford = enoughExp && enoughLapis;
 			final int arrow_u = ARROW_OFFSET_X + (canAfford ? 0 : ARROW_WIDTH);
-			drawTexture(matrices, recipeButtonX + RECIPE_BUTTON_ARROW_OFFSET_X, recipeButtonY, 102, arrow_u, ARROW_OFFSET_Y, ARROW_WIDTH, ARROW_HEIGHT, 256, 256);
+//			drawTexture(matrices, recipeButtonX + RECIPE_BUTTON_ARROW_OFFSET_X, recipeButtonY, 102, arrow_u, ARROW_OFFSET_Y, ARROW_WIDTH, ARROW_HEIGHT, 256, 256);
+			matrices.drawTexture(TEXTURE, recipeButtonX + RECIPE_BUTTON_ARROW_OFFSET_X, recipeButtonY, 102, arrow_u, ARROW_OFFSET_Y, ARROW_WIDTH, ARROW_HEIGHT, 256, 256);
 		}
 	}
 
-	private void renderRecipeIcons(MatrixStack matrices, int recipeListX, int recipeListY, int indexOfLastVisibleRecipe)
+	private void renderRecipeIcons(DrawContext matrices, int recipeListX, int recipeListY, int indexOfLastVisibleRecipe)
 	{
 		List<RuneEnchantingRecipe> recipes = this.handler.getAvailableRecipes();
 		for(int i = this.scrollOffset; i < indexOfLastVisibleRecipe && i < recipes.size(); i++)
@@ -155,22 +163,26 @@ public class RuneEnchantingScreen extends HandledScreen<RuneEnchantingScreenHand
 			final int recipeButtonX = recipeListX + recipeButtonIndex % RECIPE_LIST_COLUMNS * RECIPE_ENTRY_WIDTH;
 			final int recipeButtonY = recipeListY + (recipeButtonIndex / RECIPE_LIST_COLUMNS) * RECIPE_ENTRY_HEIGHT + 2;
 
-			final ItemStack outputStack = recipes.get(i).getOutput();
-			this.client.getItemRenderer().renderInGuiWithOverrides(outputStack, recipeButtonX + RECIPE_BUTTON_OUTPUT_OFFSET_X, recipeButtonY);
-			this.client.getItemRenderer().renderGuiItemOverlay(this.textRenderer, outputStack, recipeButtonX + RECIPE_BUTTON_OUTPUT_OFFSET_X, recipeButtonY);
+			final ItemStack outputStack = recipes.get(i).getOutput(null);
+//			this.client.getItemRenderer().renderInGuiWithOverrides(outputStack, recipeButtonX + RECIPE_BUTTON_OUTPUT_OFFSET_X, recipeButtonY);
+			matrices.drawItem(outputStack, recipeButtonX + RECIPE_BUTTON_OUTPUT_OFFSET_X, recipeButtonY);
+//			this.client.getItemRenderer().renderGuiItemOverlay(this.textRenderer, outputStack, recipeButtonX + RECIPE_BUTTON_OUTPUT_OFFSET_X, recipeButtonY);
+			matrices.drawItemInSlot(this.textRenderer, outputStack, recipeButtonX + RECIPE_BUTTON_OUTPUT_OFFSET_X, recipeButtonY);
 
 			final ItemStack lapisStack = new ItemStack(Items.LAPIS_LAZULI);
 			lapisStack.setCount(recipes.get(i).getLapisCost());
-			this.client.getItemRenderer().renderGuiItemOverlay(this.textRenderer, lapisStack, recipeButtonX + RECIPE_BUTTON_LAPIS_OFFSET_X, recipeButtonY, lapisStack.getCount() == 1 ? "1" : null);
+//			this.client.getItemRenderer().renderGuiItemOverlay(this.textRenderer, lapisStack, recipeButtonX + RECIPE_BUTTON_LAPIS_OFFSET_X, recipeButtonY, lapisStack.getCount() == 1 ? "1" : null);
+			matrices.drawItemInSlot(this.textRenderer, lapisStack, recipeButtonX + RECIPE_BUTTON_LAPIS_OFFSET_X, recipeButtonY, lapisStack.getCount() == 1 ? "1" : null);
 
 			final ItemStack expStack = new ItemStack(Items.STICK);
 			expStack.setCount(recipes.get(i).getExpCost());
-			this.client.getItemRenderer().renderGuiItemOverlay(this.textRenderer, expStack, recipeButtonX + RECIPE_BUTTON_EXP_OFFSET_X, recipeButtonY, expStack.getCount() == 1 ? "1" : null);
+//			this.client.getItemRenderer().renderGuiItemOverlay(this.textRenderer, expStack, recipeButtonX + RECIPE_BUTTON_EXP_OFFSET_X, recipeButtonY, expStack.getCount() == 1 ? "1" : null);
+			matrices.drawItemInSlot(this.textRenderer, expStack, recipeButtonX + RECIPE_BUTTON_EXP_OFFSET_X, recipeButtonY, expStack.getCount() == 1 ? "1" : null);
 		}
 	}
 
 	@Override
-	protected void drawMouseoverTooltip(MatrixStack matrices, int x, int y)
+	protected void drawMouseoverTooltip(DrawContext matrices, int x, int y)
 	{
 		super.drawMouseoverTooltip(matrices, x, y);
 		if (this.handler.canCraft())
@@ -189,31 +201,37 @@ public class RuneEnchantingScreen extends HandledScreen<RuneEnchantingScreenHand
 					boolean overOutput = x >= recipeX + RECIPE_BUTTON_OUTPUT_OFFSET_X && x < recipeX + RECIPE_BUTTON_OUTPUT_OFFSET_X + 16;
 					boolean overExp = x >= recipeX + RECIPE_BUTTON_EXP_OFFSET_X && x < recipeX + RECIPE_BUTTON_EXP_OFFSET_X + EXP_WIDTH;
 					boolean overLapis = x >= recipeX + RECIPE_BUTTON_LAPIS_OFFSET_X && x < recipeX + RECIPE_BUTTON_LAPIS_OFFSET_X + LAPIS_WIDTH;
-					final ItemStack outputStack = recipes.get(i).getOutput();
+					final ItemStack outputStack = recipes.get(i).getOutput(null);
 
 					if (overOutput)
 					{
-						this.renderTooltip(matrices, outputStack, x, y);
+//						this.renderTooltip(matrices, outputStack, x, y);
+						matrices.drawItemTooltip(this.textRenderer, outputStack, x, y);
 					}
 					else if (overLapis && !this.handler.hasEnoughLapis(i))
 					{
-						this.renderTooltip(matrices, NOT_ENOUGH_LAPIS, x, y);
+//						this.renderTooltip(matrices, NOT_ENOUGH_LAPIS, x, y);
+						matrices.drawTooltip(this.textRenderer, NOT_ENOUGH_LAPIS, x, y);
 					}
 					else if (overExp && !this.handler.hasEnoughExp(i))
 					{
-						this.renderTooltip(matrices, NOT_ENOUGH_EXP, x, y);
+//						this.renderTooltip(matrices, NOT_ENOUGH_EXP, x, y);
+						matrices.drawTooltip(this.textRenderer, NOT_ENOUGH_EXP, x, y);
 					}
 					else if (!this.handler.hasEnoughExp(i))
 					{
-						this.renderTooltip(matrices, NOT_ENOUGH_EXP, x, y);
+//						this.renderTooltip(matrices, NOT_ENOUGH_EXP, x, y);
+						matrices.drawTooltip(this.textRenderer, NOT_ENOUGH_EXP, x, y);
 					}
 					else if(!this.handler.hasEnoughLapis(i))
 					{
-						this.renderTooltip(matrices, NOT_ENOUGH_LAPIS, x, y);
+//						this.renderTooltip(matrices, NOT_ENOUGH_LAPIS, x, y);
+						matrices.drawTooltip(this.textRenderer, NOT_ENOUGH_LAPIS, x, y);
 					}
 					else
 					{
-						this.renderTooltip(matrices, outputStack, x, y);
+//						this.renderTooltip(matrices, outputStack, x, y);
+						matrices.drawItemTooltip(this.textRenderer, outputStack, x, y);
 					}
 				}
 			}

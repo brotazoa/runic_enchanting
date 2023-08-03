@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/revenge_rune",
+  "required_rune": "runic_enchanting:revenge_rune",
   "result": {
     "item": "runic_enchanting:revenge_rune_page"
   }

@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/destruction_rune",
+  "required_rune": "runic_enchanting:destruction_rune",
   "result": {
     "item": "runic_enchanting:destruction_rune_page"
   }

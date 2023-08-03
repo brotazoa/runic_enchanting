@@ -11,11 +11,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.*;
+import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class RuneEnchantingRecipe implements Recipe<Inventory>
@@ -63,7 +63,7 @@ public class RuneEnchantingRecipe implements Recipe<Inventory>
 		this.extra = base.extra;
 		this.output = base.output;
 
-		Enchantment enchantment = Registry.ENCHANTMENT.get(base.enchantmentIdentifier);
+		Enchantment enchantment = Registries.ENCHANTMENT.get(base.enchantmentIdentifier);
 
 		//lapis cost range 1 - 3 based on level
 		final double lapisStep = 3.0 / (enchantment != null ? (double) enchantment.getMaxLevel() : 3.0);
@@ -95,7 +95,7 @@ public class RuneEnchantingRecipe implements Recipe<Inventory>
 	}
 
 	@Override
-	public ItemStack getOutput()
+	public ItemStack getOutput(DynamicRegistryManager registryManager)
 	{
 		ItemStack stack = output.copy();
 
@@ -103,7 +103,7 @@ public class RuneEnchantingRecipe implements Recipe<Inventory>
 //		list.add(EnchantmentHelper.createNbt(enchantmentIdentifier, level));
 //		stack.getOrCreateNbt().put(EnchantedBookItem.STORED_ENCHANTMENTS_KEY, list);
 
-		Enchantment enchantment = Registry.ENCHANTMENT.get(enchantmentIdentifier);
+		Enchantment enchantment = Registries.ENCHANTMENT.get(enchantmentIdentifier);
 		if (enchantment != null && stack.getItem() instanceof EnchantedBookItem)
 		{
 			EnchantedBookItem.addEnchantment(stack, new EnchantmentLevelEntry(enchantment, level));
@@ -113,9 +113,9 @@ public class RuneEnchantingRecipe implements Recipe<Inventory>
 	}
 
 	@Override
-	public ItemStack craft(Inventory inventory)
+	public ItemStack craft(Inventory inventory, DynamicRegistryManager registryManager)
 	{
-		return getOutput();
+		return getOutput(registryManager);
 	}
 
 	public void onCraft(Inventory inventory, PlayerEntity player)

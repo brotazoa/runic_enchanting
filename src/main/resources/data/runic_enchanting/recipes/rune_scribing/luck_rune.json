@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/luck_rune",
+  "required_rune": "runic_enchanting:luck_rune",
   "result": {
     "item": "runic_enchanting:luck_rune_page"
   }

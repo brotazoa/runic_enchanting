@@ -6,8 +6,6 @@
   "mixins": [
   ],
   "client": [
-    "RuneBlockModelLoaderMixin",
-    "RunePatternModelLoaderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

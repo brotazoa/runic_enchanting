@@ -24,7 +24,7 @@ public class RuneEnchantingReiDisplay implements Display
 				EntryIngredients.ofIngredient(ingredients.get(2)),
 				EntryIngredients.ofIngredient(ingredients.get(3)),
 				EntryIngredients.ofIngredient(ingredients.get(4)));
-		this.output = EntryIngredients.of(recipe.getOutput());
+		this.output = EntryIngredients.of(recipe.getOutput(null));
 	}
 
 	@Override

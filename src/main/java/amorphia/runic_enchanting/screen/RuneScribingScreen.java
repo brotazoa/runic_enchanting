@@ -4,6 +4,7 @@ import amorphia.runic_enchanting.RunicEnchanting;
 import amorphia.runic_enchanting.recipes.RuneScribingRecipe;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.sound.PositionedSoundInstance;
@@ -46,39 +47,41 @@ public class RuneScribingScreen extends HandledScreen<RuneScribingScreenHandler>
 	}
 
 	@Override
-	public void render(MatrixStack matrices, int mouseX, int mouseY, float delta)
+	public void render(DrawContext context, int mouseX, int mouseY, float delta)
 	{
-		super.render(matrices, mouseX, mouseY, delta);
-		this.drawMouseoverTooltip(matrices, mouseX, mouseY);
+		super.render(context, mouseX, mouseY, delta);
+		this.drawMouseoverTooltip(context, mouseX, mouseY);
 	}
 
 	@Override
-	protected void drawBackground(MatrixStack matrices, float delta, int mouseX, int mouseY)
+	protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY)
 	{
-		this.renderBackground(matrices);
-		RenderSystem.setShader(GameRenderer::getPositionTexShader);
-		RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
-		RenderSystem.setShaderTexture(0, TEXTURE);
-		RenderSystem.enableBlend();
+		this.renderBackground(context);
+//		RenderSystem.setShader(GameRenderer::getPositionTexShader);
+//		RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+//		RenderSystem.setShaderTexture(0, TEXTURE);
+//		RenderSystem.enableBlend();
 
 		//draw background
-		this.drawTexture(matrices, this.x, this.y, 0, 0, this.backgroundWidth, this.backgroundHeight);
+//		this.drawTexture(context, this.x, this.y, 0, 0, this.backgroundWidth, this.backgroundHeight);
+		context.drawTexture(TEXTURE, this.x, this.y, 0, 0, this.backgroundWidth, this.backgroundHeight);
 
 		//draw scrollbar thumb
 		int thumbPosition = (int) (((float) SCROLLBAR_SCROLLABLE_HEIGHT) * this.scrollAmount);
-		this.drawTexture(matrices, this.x + SCROLLBAR_OFFSET_X, this.y + SCROLLBAR_OFFSET_Y + thumbPosition, this.backgroundWidth + (this.shouldScroll() ? 0 : SCROLLBAR_THUMB_WIDTH), 0, SCROLLBAR_THUMB_WIDTH, SCROLLBAR_THUMB_HEIGHT);
+//		this.drawTexture(context, this.x + SCROLLBAR_OFFSET_X, this.y + SCROLLBAR_OFFSET_Y + thumbPosition, this.backgroundWidth + (this.shouldScroll() ? 0 : SCROLLBAR_THUMB_WIDTH), 0, SCROLLBAR_THUMB_WIDTH, SCROLLBAR_THUMB_HEIGHT);
+		context.drawTexture(TEXTURE, this.x + SCROLLBAR_OFFSET_X, this.y + SCROLLBAR_OFFSET_Y + thumbPosition, this.backgroundWidth + (this.shouldScroll() ? 0 : SCROLLBAR_THUMB_WIDTH), 0, SCROLLBAR_THUMB_WIDTH, SCROLLBAR_THUMB_HEIGHT);
 
 		final int recipeListX = this.x + RECIPE_LIST_OFFSET_X;
 		final int recipeListY = this.y + RECIPE_LIST_OFFSET_Y;
 		final int indexOfLastVisibleRecipe = this.scrollOffset + RECIPE_LIST_ROWS * RECIPE_LIST_COLUMNS;
-		this.renderRecipeBackground(matrices, mouseX, mouseY, recipeListX, recipeListY, indexOfLastVisibleRecipe);
-		this.renderRecipeIcons(recipeListX, recipeListY, indexOfLastVisibleRecipe);
+		this.renderRecipeBackground(context, mouseX, mouseY, recipeListX, recipeListY, indexOfLastVisibleRecipe);
+		this.renderRecipeIcons(context, recipeListX, recipeListY, indexOfLastVisibleRecipe);
 	}
 
 	@Override
-	protected void drawMouseoverTooltip(MatrixStack matrices, int x, int y)
+	protected void drawMouseoverTooltip(DrawContext context, int x, int y)
 	{
-		super.drawMouseoverTooltip(matrices, x, y);
+		super.drawMouseoverTooltip(context, x, y);
 		if (this.canCraft)
 		{
 			int listOffsetX = this.x + RECIPE_LIST_OFFSET_X;
@@ -92,13 +95,14 @@ public class RuneScribingScreen extends HandledScreen<RuneScribingScreenHandler>
 				int recipeY = listOffsetY + recipeIndex / RECIPE_LIST_COLUMNS * RECIPE_ENTRY_HEIGHT + 2;
 				if(x >= recipeX && x < recipeX + RECIPE_ENTRY_WIDTH && y >= recipeY && y < recipeY + RECIPE_ENTRY_HEIGHT)
 				{
-					this.renderTooltip(matrices, recipes.get(i).getOutput(), x, y);
+//					this.renderTooltip(context, recipes.get(i).getOutput(), x, y);
+					context.drawItemTooltip(this.textRenderer, recipes.get(i).getOutput(null), x, y);
 				}
 			}
 		}
 	}
 
-	private void renderRecipeBackground(MatrixStack matrices, int mouseX, int mouseY, int x, int y, int indexOfLastVisibleRecipe)
+	private void renderRecipeBackground(DrawContext context, int mouseX, int mouseY, int x, int y, int indexOfLastVisibleRecipe)
 	{
 		for(int i = this.scrollOffset; i < indexOfLastVisibleRecipe && i < this.handler.getAvailableRecipesCount(); i++)
 		{
@@ -117,11 +121,12 @@ public class RuneScribingScreen extends HandledScreen<RuneScribingScreenHandler>
 			}
 
 			//render button
-			this.drawTexture(matrices, recipeButtonX, recipeButtonY - 1, 0, n, RECIPE_ENTRY_WIDTH, RECIPE_ENTRY_HEIGHT);
+//			this.drawTexture(context, recipeButtonX, recipeButtonY - 1, 0, n, RECIPE_ENTRY_WIDTH, RECIPE_ENTRY_HEIGHT);
+			context.drawTexture(TEXTURE, recipeButtonX, recipeButtonY - 1, 0, n, RECIPE_ENTRY_WIDTH, RECIPE_ENTRY_HEIGHT);
 		}
 	}
 
-	private void renderRecipeIcons(int x, int y, int scrollOffset)
+	private void renderRecipeIcons(DrawContext context, int x, int y, int scrollOffset)
 	{
 		List<RuneScribingRecipe> recipes = this.handler.getAvailableRecipes();
 		for(int i = this.scrollOffset; i < scrollOffset && i < recipes.size(); ++i)
@@ -129,7 +134,8 @@ public class RuneScribingScreen extends HandledScreen<RuneScribingScreenHandler>
 			int recipeButtonIndex = i - this.scrollOffset;
 			int recipeButtonX = x + recipeButtonIndex % RECIPE_LIST_COLUMNS * RECIPE_ENTRY_WIDTH;
 			int recipeButtonY = y + (recipeButtonIndex / RECIPE_LIST_COLUMNS) * RECIPE_ENTRY_HEIGHT + 2;
-			this.client.getItemRenderer().renderInGuiWithOverrides(recipes.get(i).getOutput(), recipeButtonX, recipeButtonY);
+//			this.client.getItemRenderer().renderInGuiWithOverrides(recipes.get(i).getOutput(), recipeButtonX, recipeButtonY);
+			context.drawItemInSlot(this.textRenderer, recipes.get(i).getOutput(null), recipeButtonX, recipeButtonY);
 		}
 	}
 

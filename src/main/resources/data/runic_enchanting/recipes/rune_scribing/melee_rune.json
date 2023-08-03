@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/melee_rune",
+  "required_rune": "runic_enchanting:melee_rune",
   "result": {
     "item": "runic_enchanting:melee_rune_page"
   }

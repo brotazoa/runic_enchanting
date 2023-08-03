@@ -7,16 +7,17 @@ import amorphia.runic_enchanting.items.ChalkItem;
 import amorphia.runic_enchanting.items.ChiselItem;
 import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.Material;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.resource.ResourceType;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 import java.util.Locale;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class RE_Blocks
 	public static void init()
 	{
 		register("rune_scribing_table", new RuneScribingTable(FabricBlockSettings.copyOf(Blocks.ENCHANTING_TABLE)));
-		register("rune_enchanting_table", new RunicEnchantingTable(FabricBlockSettings.of(Material.WOOD).strength(5.0f, 6.0f).sounds(BlockSoundGroup.WOOD)));
+		register("rune_enchanting_table", new RunicEnchantingTable(FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE)));
 
 		for(RuneBaseBlocks baseBlock : RuneBaseBlocks.VALUES_CACHE)
 		{
@@ -45,6 +46,7 @@ public class RE_Blocks
 		}
 
 		ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(RuneBlockClientReloadListener.INSTANCE);
+		ModelLoadingRegistry.INSTANCE.registerResourceProvider(resourceManager -> new RuneBlockModelProvider());
 	}
 
 	private static void makeBlocksForBase(RuneBaseBlocks baseBlock)
@@ -70,6 +72,6 @@ public class RE_Blocks
 	private static Block register(String path, Block block)
 	{
 		BLOCKS.put(path, block);
-		return Registry.register(Registry.BLOCK, RunicEnchanting.identify(path), block);
+		return Registry.register(Registries.BLOCK, RunicEnchanting.identify(path), block);
 	}
 }

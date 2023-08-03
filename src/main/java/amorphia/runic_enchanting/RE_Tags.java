@@ -1,11 +1,10 @@
 package amorphia.runic_enchanting;
 
 import com.google.common.collect.Maps;
-import net.minecraft.block.Block;
 import net.minecraft.block.entity.BannerPattern;
 import net.minecraft.item.Item;
-import net.minecraft.tag.TagKey;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.Locale;
 import java.util.Map;
@@ -47,34 +46,34 @@ public class RE_Tags
 
 	public static void init()
 	{
-		RUNE_PATTERNS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("rune_patterns"));
-		RUNE_STONES = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("rune_stones"));
-		RUNE_PAGES = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("rune_pages"));
+		RUNE_PATTERNS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("rune_patterns"));
+		RUNE_STONES = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("rune_stones"));
+		RUNE_PAGES = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("rune_pages"));
 
-		CAN_BE_CONVERTED_TO_PATTERN = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("can_be_converted_to_pattern"));
+		CAN_BE_CONVERTED_TO_PATTERN = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("can_be_converted_to_pattern"));
 
-		AIR_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("air_rune_blocks"));
-		ARMOR_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("armor_rune_blocks"));
-		CUNNING_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("cunning_rune_blocks"));
-		DAMAGE_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("damage_rune_blocks"));
-		DESTRUCTION_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("destruction_rune_blocks"));
-		EARTH_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("earth_rune_blocks"));
-		EQUIPMENT_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("equipment_rune_blocks"));
-		FIRE_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("fire_rune_blocks"));
-		FORCE_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("force_rune_blocks"));
-		INVENTORY_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("inventory_rune_blocks"));
-		LIFE_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("life_rune_blocks"));
-		LUCK_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("luck_rune_blocks"));
-		MELEE_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("melee_rune_blocks"));
-		PRESERVATION_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("preservation_rune_blocks"));
-		PROTECTION_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("protection_rune_blocks"));
-		RANGE_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("range_rune_blocks"));
-		REVENGE_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("revenge_rune_blocks"));
-		SPEED_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("speed_rune_blocks"));
-		SPIRIT_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("spirit_rune_blocks"));
-		TIME_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("time_rune_blocks"));
-		TOOL_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("tool_rune_blocks"));
-		WATER_RUNE_BLOCKS = TagKey.of(Registry.ITEM_KEY, RunicEnchanting.identify("water_rune_blocks"));
+		AIR_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("air_rune_blocks"));
+		ARMOR_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("armor_rune_blocks"));
+		CUNNING_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("cunning_rune_blocks"));
+		DAMAGE_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("damage_rune_blocks"));
+		DESTRUCTION_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("destruction_rune_blocks"));
+		EARTH_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("earth_rune_blocks"));
+		EQUIPMENT_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("equipment_rune_blocks"));
+		FIRE_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("fire_rune_blocks"));
+		FORCE_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("force_rune_blocks"));
+		INVENTORY_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("inventory_rune_blocks"));
+		LIFE_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("life_rune_blocks"));
+		LUCK_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("luck_rune_blocks"));
+		MELEE_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("melee_rune_blocks"));
+		PRESERVATION_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("preservation_rune_blocks"));
+		PROTECTION_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("protection_rune_blocks"));
+		RANGE_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("range_rune_blocks"));
+		REVENGE_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("revenge_rune_blocks"));
+		SPEED_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("speed_rune_blocks"));
+		SPIRIT_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("spirit_rune_blocks"));
+		TIME_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("time_rune_blocks"));
+		TOOL_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("tool_rune_blocks"));
+		WATER_RUNE_BLOCKS = TagKey.of(RegistryKeys.ITEM, RunicEnchanting.identify("water_rune_blocks"));
 
 		BLOCK_TAG_BY_RUNE.put(Runes.AIR, AIR_RUNE_BLOCKS);
 		BLOCK_TAG_BY_RUNE.put(Runes.ARMOR, ARMOR_RUNE_BLOCKS);
@@ -101,7 +100,7 @@ public class RE_Tags
 
 		for (Runes rune : Runes.VALUES_CACHE)
 		{
-			BANNER_PATTERN_TAG_BY_RUNE.put(rune, TagKey.of(Registry.BANNER_PATTERN_KEY, RunicEnchanting.identify("pattern_item/" + rune.name().toLowerCase(Locale.ROOT))));
+			BANNER_PATTERN_TAG_BY_RUNE.put(rune, TagKey.of(RegistryKeys.BANNER_PATTERN, RunicEnchanting.identify("pattern_item/" + rune.name().toLowerCase(Locale.ROOT))));
 		}
 	}
 

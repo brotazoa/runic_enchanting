@@ -28,7 +28,7 @@ public class RuneItemModelBuilder
 				+ "\"parent\": \"minecraft:item/generated\","
 				+ "\"textures\": {"
 				+ "\"layer0\": \"runic_enchanting:item/rune_pattern_base\","
-				+ "\"layer1\": \"" + rune.getRuneTextureIdentifier() + "\"}"
+				+ "\"layer1\": \"" + new Identifier(rune.getRuneTextureIdentifier().getNamespace(), "item/" + rune.getRuneTextureIdentifier().getPath() + "_item_overlay") + "\"}"
 				+ "}";
 	}
 
@@ -38,7 +38,7 @@ public class RuneItemModelBuilder
 				+ "\"parent\": \"minecraft:item/generated\","
 				+ "\"textures\": {"
 				+ "\"layer0\": \"runic_enchanting:item/rune_stone_base\","
-				+ "\"layer1\": \"" + rune.getRuneTextureIdentifier() + "\"}"
+				+ "\"layer1\": \"" + new Identifier(rune.getRuneTextureIdentifier().getNamespace(), "item/" + rune.getRuneTextureIdentifier().getPath() + "_item_overlay") + "\"}"
 				+ "}";
 	}
 
@@ -48,7 +48,7 @@ public class RuneItemModelBuilder
 				+ "\"parent\": \"minecraft:item/generated\","
 				+ "\"textures\": {"
 				+ "\"layer0\": \"runic_enchanting:item/rune_sheet_base\","
-				+ "\"layer1\": \"" + rune.getRuneTextureIdentifier() + "\"}"
+				+ "\"layer1\": \"" + new Identifier(rune.getRuneTextureIdentifier().getNamespace(), "item/" + rune.getRuneTextureIdentifier().getPath() + "_item_overlay") + "\"}"
 				+ "}";
 	}
 }

@@ -11,26 +11,18 @@ import amorphia.runic_enchanting.recipes.RE_Recipes;
 import amorphia.runic_enchanting.screen.RE_Screens;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class RunicEnchanting implements ModInitializer, ClientModInitializer, DataGeneratorEntrypoint
 {
 	public static final String modid = "runic_enchanting";
-	public static Item tabItem = Registry.register(Registry.ITEM, identify("tab_item"), new Item(new Item.Settings()));
-	public static final ItemGroup group = FabricItemGroupBuilder.create(identify("group")).icon(() -> new ItemStack(tabItem)).build();
-
 	public static final Logger LOGGER = LogManager.getLogger();
 
 	@Override
@@ -43,6 +35,8 @@ public class RunicEnchanting implements ModInitializer, ClientModInitializer, Da
 		RE_Screens.init();
 		RE_Loot.init();
 		RE_BannerPatterns.init();
+
+		RunicEnchantingCreativeTab.init();
 
 		//fabric enchantments compat
 		if (FabricLoader.getInstance().isModLoaded("fabricenchantments"))
@@ -100,10 +94,11 @@ public class RunicEnchanting implements ModInitializer, ClientModInitializer, Da
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator)
 	{
-		fabricDataGenerator.addProvider(RuneBlockModelGenerator::new);
-		fabricDataGenerator.addProvider(RuneBlockLootTableGenerator::new);
-		fabricDataGenerator.addProvider(RuneBlockTagGenerator::new);
-		fabricDataGenerator.addProvider(RuneItemTagGenerator::new);
+		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
+		pack.addProvider(RuneBlockModelGenerator::new);
+		pack.addProvider(RuneBlockLootTableGenerator::new);
+		pack.addProvider(RuneBlockTagGenerator::new);
+		pack.addProvider(RuneItemTagGenerator::new);
 	}
 
 	public static Identifier identify(String path)

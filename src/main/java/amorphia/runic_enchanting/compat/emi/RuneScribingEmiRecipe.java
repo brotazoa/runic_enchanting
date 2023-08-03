@@ -25,7 +25,7 @@ public class RuneScribingEmiRecipe implements EmiRecipe
 	{
 		this.identifier = recipe.getId();
 		this.inputs = List.of(EmiIngredient.of(recipe.getIngredients().get(0)));
-		this.output = List.of(EmiStack.of(recipe.getOutput()));
+		this.output = List.of(EmiStack.of(recipe.getOutput(null)));
 		runeBlock = EmiIngredient.of(RE_Tags.BLOCK_TAG_BY_RUNE.get(recipe.getRequiredRune()));
 	}
 

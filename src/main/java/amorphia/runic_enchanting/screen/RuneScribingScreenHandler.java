@@ -52,7 +52,7 @@ public class RuneScribingScreenHandler extends ScreenHandler
 	{
 		super(RE_Screens.RUNE_SCRIBING_SCREEN_HANDLER_TYPE, syncID);
 		this.context = context;
-		this.world = playerInventory.player.world;
+		this.world = playerInventory.player.getWorld();
 		this.selectedRecipe = Property.create();
 		this.allRecipes = Lists.newArrayList(); //TODO: recipe lookup here
 		this.availableRecipes = Lists.newArrayList();
@@ -92,8 +92,8 @@ public class RuneScribingScreenHandler extends ScreenHandler
 			@Override
 			public void onTakeItem(PlayerEntity player, ItemStack stack)
 			{
-				stack.onCraft(player.world, player, stack.getCount());
-				RuneScribingScreenHandler.this.output.unlockLastRecipe(player);
+				stack.onCraft(player.getWorld(), player, stack.getCount());
+				RuneScribingScreenHandler.this.output.unlockLastRecipe(player, this.getInputStacks());
 
 				RuneScribingScreenHandler.this.inputSlot.takeStack(1);
 				RuneScribingScreenHandler.this.onContentChanged(RuneScribingScreenHandler.this.input);
@@ -110,6 +110,11 @@ public class RuneScribingScreenHandler extends ScreenHandler
 				});
 
 				super.onTakeItem(player, stack);
+			}
+
+			private List<ItemStack> getInputStacks()
+			{
+				return List.of(RuneScribingScreenHandler.this.inputSlot.getStack());
 			}
 		});
 
@@ -181,7 +186,7 @@ public class RuneScribingScreenHandler extends ScreenHandler
 		{
 			RuneScribingRecipe recipe = this.availableRecipes.get(this.selectedRecipe.get());
 			this.output.setLastRecipe(recipe);
-			this.outputSlot.setStack(recipe.craft(this.input));
+			this.outputSlot.setStack(recipe.craft(this.input, null));
 		}
 		else
 		{
@@ -202,7 +207,7 @@ public class RuneScribingScreenHandler extends ScreenHandler
 	}
 
 	@Override
-	public ItemStack transferSlot(PlayerEntity player, int index) {
+	public ItemStack quickMove(PlayerEntity player, int index) {
 		ItemStack itemStack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(index);
 		if (slot != null && slot.hasStack()) {
@@ -210,7 +215,7 @@ public class RuneScribingScreenHandler extends ScreenHandler
 			Item item = itemStack2.getItem();
 			itemStack = itemStack2.copy();
 			if (index == 1) {
-				item.onCraft(itemStack2, player.world, player);
+				item.onCraft(itemStack2, player.getWorld(), player);
 				if (!this.insertItem(itemStack2, 2, 38, true)) {
 					return ItemStack.EMPTY;
 				}
@@ -258,9 +263,9 @@ public class RuneScribingScreenHandler extends ScreenHandler
 	}
 
 	@Override
-	public void close(PlayerEntity player)
+	public void onClosed(PlayerEntity player)
 	{
-		super.close(player);
+		super.onClosed(player);
 		this.output.removeStack(1);
 		this.context.run((world1, blockPos) -> this.dropInventory(player, this.input));
 	}

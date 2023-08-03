@@ -14,13 +14,13 @@ import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.Registries;
 import net.minecraft.screen.Property;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 import java.util.Comparator;
@@ -65,7 +65,7 @@ public class RuneEnchantingScreenHandler extends ScreenHandler
 	{
 		super(RE_Screens.RUNE_ENCHANTING_SCREEN_HANDLER_TYPE, syncID);
 		this.context = context;
-		this.world = playerInventory.player.world;
+		this.world = playerInventory.player.getWorld();
 		this.player = playerInventory.player;
 		this.selectedRecipe = Property.create();
 		this.contentsChangedListener = () -> {};
@@ -98,8 +98,8 @@ public class RuneEnchantingScreenHandler extends ScreenHandler
 			@Override
 			public void onTakeItem(PlayerEntity player, ItemStack stack)
 			{
-				stack.onCraft(player.world, player, stack.getCount());
-				RuneEnchantingScreenHandler.this.output.unlockLastRecipe(player);
+				stack.onCraft(player.getWorld(), player, stack.getCount());
+				RuneEnchantingScreenHandler.this.output.unlockLastRecipe(player, this.getInputStacks());
 
 				if (isInBounds(getSelectedRecipe()) && getAvailableRecipes().get(getSelectedRecipe()) != null)
 				{
@@ -118,6 +118,16 @@ public class RuneEnchantingScreenHandler extends ScreenHandler
 				});
 
 				super.onTakeItem(player, stack);
+			}
+
+			private List<ItemStack> getInputStacks()
+			{
+				return List.of(RuneEnchantingScreenHandler.this.bookSlot.getStack(),
+						RuneEnchantingScreenHandler.this.lapisSlot.getStack(),
+						RuneEnchantingScreenHandler.this.targetSlot.getStack(),
+						RuneEnchantingScreenHandler.this.primarySlot.getStack(),
+						RuneEnchantingScreenHandler.this.secondarySlot.getStack(),
+						RuneEnchantingScreenHandler.this.extraSlot.getStack());
 			}
 		});
 
@@ -142,7 +152,7 @@ public class RuneEnchantingScreenHandler extends ScreenHandler
 	}
 
 	@Override
-	public ItemStack transferSlot(PlayerEntity player, int index)
+	public ItemStack quickMove(PlayerEntity player, int index)
 	{
 		ItemStack itemStack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(index);
@@ -155,7 +165,7 @@ public class RuneEnchantingScreenHandler extends ScreenHandler
 			//output to inventory
 			if (index == outputSlot.getIndex())
 			{
-				slotItem.onCraft(slotStack, player.world, player);
+				slotItem.onCraft(slotStack, player.getWorld(), player);
 				if (!this.insertItem(slotStack, outputSlot.getIndex() + 1, slots.size(), true))
 				{
 					return ItemStack.EMPTY;
@@ -252,7 +262,7 @@ public class RuneEnchantingScreenHandler extends ScreenHandler
 		if (!inventory.isEmpty())
 		{
 			this.world.getRecipeManager().getAllMatches(RuneEnchantingRecipe.Type.INSTANCE, inventory, this.world).forEach(recipe -> {
-				Enchantment enchantment = Registry.ENCHANTMENT.get(recipe.getEnchantmentIdentifier());
+				Enchantment enchantment = Registries.ENCHANTMENT.get(recipe.getEnchantmentIdentifier());
 
 				if(enchantment == null)
 					return;
@@ -280,7 +290,7 @@ public class RuneEnchantingScreenHandler extends ScreenHandler
 		{
 			RuneEnchantingRecipe recipe = this.availableRecipes.get(this.selectedRecipe.get());
 			this.output.setLastRecipe(recipe);
-			this.outputSlot.setStack(recipe.craft(this.input));
+			this.outputSlot.setStack(recipe.craft(this.input, null));
 		}
 		else
 		{
@@ -352,9 +362,9 @@ public class RuneEnchantingScreenHandler extends ScreenHandler
 	}
 
 	@Override
-	public void close(PlayerEntity player)
+	public void onClosed(PlayerEntity player)
 	{
-		super.close(player);
+		super.onClosed(player);
 		this.output.removeStack(1);
 		this.context.run((world1, blockPos) -> this.dropInventory(player, this.input));
 	}

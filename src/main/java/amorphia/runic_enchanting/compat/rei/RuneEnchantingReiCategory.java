@@ -19,7 +19,7 @@ import java.util.List;
 
 public class RuneEnchantingReiCategory implements DisplayCategory<RuneEnchantingReiDisplay>
 {
-	public static final Text TITLE = Text.translatable("runic_enchanting.emi.rune_enchanting_category");
+	public static final Text TITLE = Text.translatable("emi.category.runic_enchanting.rune_enchanting_category");
 	public static final EntryStack<ItemStack> ICON = EntryStacks.of(RE_Blocks.BLOCKS.get("rune_enchanting_table"));
 	public static final CategoryIdentifier<RuneEnchantingReiDisplay> IDENTIFIER = CategoryIdentifier.of(RuneEnchantingRecipe.Type.ID);
 

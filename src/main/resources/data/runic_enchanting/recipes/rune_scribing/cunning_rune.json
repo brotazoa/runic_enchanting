@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/cunning_rune",
+  "required_rune": "runic_enchanting:cunning_rune",
   "result": {
     "item": "runic_enchanting:cunning_rune_page"
   }

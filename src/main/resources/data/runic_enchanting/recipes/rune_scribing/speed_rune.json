@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/speed_rune",
+  "required_rune": "runic_enchanting:speed_rune",
   "result": {
     "item": "runic_enchanting:speed_rune_page"
   }

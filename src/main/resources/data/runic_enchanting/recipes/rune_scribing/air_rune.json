@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/air_rune",
+  "required_rune": "runic_enchanting:air_rune",
   "result": {
     "item": "runic_enchanting:air_rune_page"
   }

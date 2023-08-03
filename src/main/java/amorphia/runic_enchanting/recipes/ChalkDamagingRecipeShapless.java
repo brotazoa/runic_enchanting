@@ -3,7 +3,7 @@ package amorphia.runic_enchanting.recipes;
 import amorphia.runic_enchanting.RunicEnchanting;
 import amorphia.runic_enchanting.items.ChalkItem;
 import com.google.gson.JsonObject;
-import net.minecraft.inventory.CraftingInventory;
+import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.RecipeType;
@@ -15,11 +15,11 @@ public class ChalkDamagingRecipeShapless extends ShapelessRecipe
 {
 	public ChalkDamagingRecipeShapless(ShapelessRecipe recipe)
 	{
-		super(recipe.getId(), recipe.getGroup(), recipe.getOutput(), recipe.getIngredients());
+		super(recipe.getId(), recipe.getGroup(), recipe.getCategory(), recipe.getOutput(null), recipe.getIngredients());
 	}
 
 	@Override
-	public DefaultedList<ItemStack> getRemainder(CraftingInventory inventory)
+	public DefaultedList<ItemStack> getRemainder(RecipeInputInventory inventory)
 	{
 		DefaultedList<ItemStack> defaultedList = DefaultedList.ofSize(inventory.size(), ItemStack.EMPTY);
 

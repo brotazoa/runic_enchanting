@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/preservation_rune",
+  "required_rune": "runic_enchanting:preservation_rune",
   "result": {
     "item": "runic_enchanting:preservation_rune_page"
   }

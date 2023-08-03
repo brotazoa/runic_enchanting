@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/life_rune",
+  "required_rune": "runic_enchanting:life_rune",
   "result": {
     "item": "runic_enchanting:life_rune_page"
   }

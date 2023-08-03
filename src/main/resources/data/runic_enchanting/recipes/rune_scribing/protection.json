@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/protection_rune",
+  "required_rune": "runic_enchanting:protection_rune",
   "result": {
     "item": "runic_enchanting:protection_rune_page"
   }

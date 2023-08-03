@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/water_rune",
+  "required_rune": "runic_enchanting:water_rune",
   "result": {
     "item": "runic_enchanting:water_rune_page"
   }

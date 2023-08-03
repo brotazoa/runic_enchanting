@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:paper"
   },
-  "required_rune": "runic_enchanting:runes/spirit_rune",
+  "required_rune": "runic_enchanting:spirit_rune",
   "result": {
     "item": "runic_enchanting:spirit_rune_page"
   }

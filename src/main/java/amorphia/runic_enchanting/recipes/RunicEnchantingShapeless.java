@@ -3,13 +3,14 @@ package amorphia.runic_enchanting.recipes;
 import amorphia.runic_enchanting.RunicEnchanting;
 import com.google.gson.JsonObject;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.inventory.CraftingInventory;
+import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.ShapelessRecipe;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 
@@ -20,15 +21,15 @@ public class RunicEnchantingShapeless extends ShapelessRecipe
 
 	public RunicEnchantingShapeless(ShapelessRecipe recipe, Identifier enchantmentIdentifier, int level)
 	{
-		super(recipe.getId(), recipe.getGroup(), recipe.getOutput(), recipe.getIngredients());
+		super(recipe.getId(), recipe.getGroup(), recipe.getCategory(), recipe.getOutput(null), recipe.getIngredients());
 		this.enchantmentIdentifier = enchantmentIdentifier;
 		this.level = level;
 	}
 
 	@Override
-	public ItemStack getOutput()
+	public ItemStack getOutput(DynamicRegistryManager registryManager)
 	{
-		ItemStack stack = super.getOutput().copy();
+		ItemStack stack = super.getOutput(registryManager).copy();
 
 		NbtList list = EnchantedBookItem.getEnchantmentNbt(stack);
 		list.add(EnchantmentHelper.createNbt(enchantmentIdentifier, level));
@@ -38,9 +39,9 @@ public class RunicEnchantingShapeless extends ShapelessRecipe
 	}
 
 	@Override
-	public ItemStack craft(CraftingInventory craftingInventory)
+	public ItemStack craft(RecipeInputInventory craftingInventory, DynamicRegistryManager registryManager)
 	{
-		return getOutput();
+		return getOutput(registryManager);
 	}
 
 	public static class Type implements RecipeType<RunicEnchantingShapeless>

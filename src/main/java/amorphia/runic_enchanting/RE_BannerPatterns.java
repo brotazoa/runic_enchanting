@@ -1,8 +1,10 @@
 package amorphia.runic_enchanting;
 
 import net.minecraft.block.entity.BannerPattern;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 
 import java.util.Locale;
 
@@ -12,8 +14,8 @@ public class RE_BannerPatterns
 	{
 		for (Runes rune : Runes.VALUES_CACHE)
 		{
-			Registry.register(Registry.BANNER_PATTERN,
-					RegistryKey.of(Registry.BANNER_PATTERN_KEY, RunicEnchanting.identify(rune.name().toLowerCase(Locale.ROOT))),
+			Registry.register(Registries.BANNER_PATTERN,
+					RegistryKey.of(RegistryKeys.BANNER_PATTERN, RunicEnchanting.identify(rune.name().toLowerCase(Locale.ROOT))),
 					new BannerPattern(rune.name().toLowerCase(Locale.ROOT)));
 		}
 	}

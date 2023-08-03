@@ -1,6 +1,7 @@
 package amorphia.runic_enchanting.compat.emi;
 
 import amorphia.runic_enchanting.RunicEnchanting;
+import amorphia.runic_enchanting.RunicEnchantingCreativeTab;
 import amorphia.runic_enchanting.blocks.RE_Blocks;
 import amorphia.runic_enchanting.recipes.RuneEnchantingRecipe;
 import amorphia.runic_enchanting.recipes.RuneScribingRecipe;
@@ -9,7 +10,7 @@ import dev.emi.emi.api.EmiRegistry;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class RunicEnchantingEmiPlugin implements EmiPlugin
 {
@@ -19,8 +20,8 @@ public class RunicEnchantingEmiPlugin implements EmiPlugin
 	@Override
 	public void register(EmiRegistry registry)
 	{
-		RUNE_SCRIBING_CATEGORY = new EmiRecipeCategory(RunicEnchanting.identify("emi.rune_scribing_category"), EmiStack.of(RE_Blocks.BLOCKS.get("rune_scribing_table")));
-		RUNE_ENCHANTING_CATEGORY = new EmiRecipeCategory(RunicEnchanting.identify("emi.rune_enchanting_category"), EmiStack.of(RE_Blocks.BLOCKS.get("rune_enchanting_table")));
+		RUNE_SCRIBING_CATEGORY = new EmiRecipeCategory(RunicEnchanting.identify("rune_scribing_category"), EmiStack.of(RE_Blocks.BLOCKS.get("rune_scribing_table")));
+		RUNE_ENCHANTING_CATEGORY = new EmiRecipeCategory(RunicEnchanting.identify("rune_enchanting_category"), EmiStack.of(RE_Blocks.BLOCKS.get("rune_enchanting_table")));
 
 		registry.addCategory(RUNE_SCRIBING_CATEGORY);
 		registry.addCategory(RUNE_ENCHANTING_CATEGORY);
@@ -35,7 +36,7 @@ public class RunicEnchantingEmiPlugin implements EmiPlugin
 
 		for(RuneEnchantingRecipe recipe : registry.getRecipeManager().listAllOfType(RuneEnchantingRecipe.Type.INSTANCE))
 		{
-			Enchantment enchantment = Registry.ENCHANTMENT.get(recipe.getEnchantmentIdentifier());
+			Enchantment enchantment = Registries.ENCHANTMENT.get(recipe.getEnchantmentIdentifier());
 			if(enchantment == null)
 				continue;
 
@@ -48,6 +49,6 @@ public class RunicEnchantingEmiPlugin implements EmiPlugin
 			registry.addRecipe(new RuneEnchantingEmiRecipe(new RuneEnchantingRecipe(recipe, enchantment.getMaxLevel())));
 		}
 
-		registry.removeEmiStacks(EmiStack.of(RunicEnchanting.tabItem));
+		registry.removeEmiStacks(EmiStack.of(RunicEnchantingCreativeTab.ICON));
 	}
 }
