@@ -25,7 +25,7 @@ public class RuneItemModelBuilder
 	public static Supplier<String> createRunePatternItemModelJson(Runes rune)
 	{
 		return () -> "{"
-				+ "\"parent\": \"minecraft:item/generated\","
+				+ "\"parent\": \"runic_enchanting:item/rune_pattern_template\","
 				+ "\"textures\": {"
 				+ "\"layer0\": \"runic_enchanting:item/rune_pattern_base\","
 				+ "\"layer1\": \"" + new Identifier(rune.getRuneTextureIdentifier().getNamespace(), "item/" + rune.getRuneTextureIdentifier().getPath() + "_item_overlay") + "\"}"
@@ -35,7 +35,7 @@ public class RuneItemModelBuilder
 	public static Supplier<String> createRuneStoneItemModelJson(Runes rune)
 	{
 		return () -> "{"
-				+ "\"parent\": \"minecraft:item/generated\","
+				+ "\"parent\": \"runic_enchanting:item/rune_stone_template\","
 				+ "\"textures\": {"
 				+ "\"layer0\": \"runic_enchanting:item/rune_stone_base\","
 				+ "\"layer1\": \"" + new Identifier(rune.getRuneTextureIdentifier().getNamespace(), "item/" + rune.getRuneTextureIdentifier().getPath() + "_item_overlay") + "\"}"
@@ -45,7 +45,7 @@ public class RuneItemModelBuilder
 	public static Supplier<String> createRunePageItemModelJson(Runes rune)
 	{
 		return () -> "{"
-				+ "\"parent\": \"minecraft:item/generated\","
+				+ "\"parent\": \"runic_enchanting:item/rune_page_template\","
 				+ "\"textures\": {"
 				+ "\"layer0\": \"runic_enchanting:item/rune_sheet_base\","
 				+ "\"layer1\": \"" + new Identifier(rune.getRuneTextureIdentifier().getNamespace(), "item/" + rune.getRuneTextureIdentifier().getPath() + "_item_overlay") + "\"}"

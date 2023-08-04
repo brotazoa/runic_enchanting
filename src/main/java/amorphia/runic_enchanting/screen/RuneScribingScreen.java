@@ -135,7 +135,7 @@ public class RuneScribingScreen extends HandledScreen<RuneScribingScreenHandler>
 			int recipeButtonX = x + recipeButtonIndex % RECIPE_LIST_COLUMNS * RECIPE_ENTRY_WIDTH;
 			int recipeButtonY = y + (recipeButtonIndex / RECIPE_LIST_COLUMNS) * RECIPE_ENTRY_HEIGHT + 2;
 //			this.client.getItemRenderer().renderInGuiWithOverrides(recipes.get(i).getOutput(), recipeButtonX, recipeButtonY);
-			context.drawItemInSlot(this.textRenderer, recipes.get(i).getOutput(null), recipeButtonX, recipeButtonY);
+			context.drawItem(recipes.get(i).getOutput(null), recipeButtonX, recipeButtonY);
 		}
 	}
 

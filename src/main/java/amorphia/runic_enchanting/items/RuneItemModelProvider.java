@@ -1,5 +1,6 @@
 package amorphia.runic_enchanting.items;
 
+import amorphia.runic_enchanting.RunicEnchanting;
 import net.fabricmc.fabric.api.client.model.ModelProviderContext;
 import net.fabricmc.fabric.api.client.model.ModelProviderException;
 import net.fabricmc.fabric.api.client.model.ModelResourceProvider;

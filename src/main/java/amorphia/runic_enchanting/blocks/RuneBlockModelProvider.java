@@ -16,7 +16,6 @@ public class RuneBlockModelProvider implements ModelResourceProvider
 	{
 		if(RuneBlockModelBuilder.getModelSupplierForIdentifier(resourceId).isPresent())
 		{
-			RunicEnchanting.LOGGER.info(resourceId);
 			String jsonString = RuneBlockModelBuilder.getModelSupplierForIdentifier(resourceId).get().getValue().get();
 			JsonUnbakedModel model = JsonUnbakedModel.deserialize(jsonString);
 			model.id = resourceId.toString();

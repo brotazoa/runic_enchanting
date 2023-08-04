@@ -30,7 +30,7 @@ public class RuneBlockModelBuilder
 				+ "\"textures\": {"
 				+ "\"particle\": \"" + baseBlock.getBaseTexture() + "\","
 				+ "\"base\": \"" + baseBlock.getBaseTexture() + "\","
-				+ "\"rune\": \"" + new Identifier(rune.getRuneTextureIdentifier().getNamespace(), "block/" + rune.getRuneTextureIdentifier().getPath()) + "_block_overlay" + "\""
+				+ "\"rune\": \"" + new Identifier(rune.getRuneTextureIdentifier().getNamespace(), "block/" + rune.getRuneTextureIdentifier().getPath() + "_block_overlay") + "\""
 				+ "}"
 				+ "}";
 	}
