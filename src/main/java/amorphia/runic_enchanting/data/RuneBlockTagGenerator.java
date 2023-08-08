@@ -16,20 +16,6 @@ public class RuneBlockTagGenerator extends FabricTagProvider.BlockTagProvider
 		super(output, registriesFuture);
 	}
 
-//	@Override
-//	protected void generateTags()
-//	{
-//		RE_Blocks.BLOCKS.values().forEach(block -> {
-//			if(block instanceof RuneBlock runeBlock)
-//			{
-//				getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(block);
-//			}
-//		});
-//
-//		getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).add(RE_Blocks.BLOCKS.get("rune_scribing_table"));
-//		getOrCreateTagBuilder(BlockTags.AXE_MINEABLE).add(RE_Blocks.BLOCKS.get("rune_enchanting_table"));
-//	}
-
 	@Override
 	protected void configure(RegistryWrapper.WrapperLookup arg)
 	{

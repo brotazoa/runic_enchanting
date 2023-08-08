@@ -3,6 +3,7 @@ package amorphia.runic_enchanting;
 import net.minecraft.util.Identifier;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 public enum Runes
 {
@@ -37,6 +38,11 @@ public enum Runes
 	public static Runes fromIdentifier(Identifier identifier)
 	{
 		return Arrays.stream(VALUES_CACHE).filter(rune -> rune.getRuneTextureIdentifier().equals(identifier)).findFirst().orElseThrow();
+	}
+
+	public static Runes byName(String name)
+	{
+		return Runes.valueOf(name.toUpperCase(Locale.ROOT));
 	}
 
 	Runes(Identifier runeTextureIdentifier)

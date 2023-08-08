@@ -7,6 +7,11 @@ public class RuneStoneItem extends Item
 {
 	protected final Runes rune;
 
+	public RuneStoneItem(Runes rune)
+	{
+		this(new Settings(), rune);
+	}
+
 	public RuneStoneItem(Settings settings, Runes rune)
 	{
 		super(settings);

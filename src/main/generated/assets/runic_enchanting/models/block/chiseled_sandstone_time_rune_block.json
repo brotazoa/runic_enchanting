@@ -1,0 +1,7 @@
+{
+  "parent": "runic_enchanting:block/rune_block_template",
+  "textures": {
+    "base": "runic_enchanting:block/sandstone_rune",
+    "rune": "runic_enchanting:block/time_rune_block_overlay"
+  }
+}

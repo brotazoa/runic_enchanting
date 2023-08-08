@@ -18,6 +18,11 @@ public class RunePatternItem extends BannerPatternItem
 
 	protected final Runes rune;
 
+	public RunePatternItem(Runes rune)
+	{
+		this(new Settings(), rune);
+	}
+
 	public RunePatternItem(Settings settings, Runes rune)
 	{
 		super(RE_Tags.BANNER_PATTERN_TAG_BY_RUNE.get(rune), settings);

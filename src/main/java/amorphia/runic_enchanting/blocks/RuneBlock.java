@@ -1,5 +1,6 @@
 package amorphia.runic_enchanting.blocks;
 
+import amorphia.runic_enchanting.RuneBaseBlocks;
 import amorphia.runic_enchanting.RuneColors;
 import amorphia.runic_enchanting.Runes;
 import com.google.common.collect.Lists;
@@ -13,12 +14,14 @@ public class RuneBlock extends Block
 
 	protected final Runes rune;
 	protected final RuneColors color;
+	protected final RuneBaseBlocks baseBlock;
 
-	public RuneBlock(Settings settings, Runes rune, RuneColors color)
+	public RuneBlock(Settings settings, Runes rune, RuneBaseBlocks baseBlock)
 	{
 		super(settings);
 		this.rune = rune;
-		this.color = color;
+		this.color = baseBlock.getColor();
+		this.baseBlock = baseBlock;
 		BLOCKS.add(this);
 	}
 
@@ -30,5 +33,10 @@ public class RuneBlock extends Block
 	public RuneColors getColor()
 	{
 		return this.color;
+	}
+
+	public RuneBaseBlocks getBaseBlock()
+	{
+		return this.baseBlock;
 	}
 }

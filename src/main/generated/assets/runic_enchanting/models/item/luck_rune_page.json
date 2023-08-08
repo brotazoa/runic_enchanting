@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "runic_enchanting:item/rune_sheet_base",
+    "layer1": "runic_enchanting:item/luck_rune_item_overlay"
+  }
+}

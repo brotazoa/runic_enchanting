@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "runic_enchanting:item/rune_pattern_base",
+    "layer1": "runic_enchanting:item/force_rune_item_overlay"
+  }
+}

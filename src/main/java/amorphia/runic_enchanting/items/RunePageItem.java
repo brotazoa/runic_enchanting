@@ -13,6 +13,11 @@ public class RunePageItem extends Item
 
 	protected final Runes rune;
 
+	public RunePageItem(Runes rune)
+	{
+		this(new Settings(), rune);
+	}
+
 	public RunePageItem(Settings settings, Runes rune)
 	{
 		super(settings);

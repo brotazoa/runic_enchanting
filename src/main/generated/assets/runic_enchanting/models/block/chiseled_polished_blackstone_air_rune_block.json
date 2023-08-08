@@ -1,0 +1,7 @@
+{
+  "parent": "runic_enchanting:block/rune_block_template",
+  "textures": {
+    "base": "runic_enchanting:block/polished_blackstone_rune",
+    "rune": "runic_enchanting:block/air_rune_block_overlay"
+  }
+}
