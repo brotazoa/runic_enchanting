@@ -68,7 +68,7 @@ public class RuneScribingTable extends Block implements Waterloggable
 	@Override
 	public BlockState getPlacementState(ItemPlacementContext ctx)
 	{
-		return this.getDefaultState().with(FACING, ctx.getPlayerLookDirection().rotateYClockwise()).with(WATERLOGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+		return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite()).with(WATERLOGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
 	}
 
 	@Override
